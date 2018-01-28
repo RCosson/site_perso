@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<title>{% block title %}Romain C. - Développeur Web{% endblock %}</title>
+	<title>{% block title %}Romain C. - {{ name }}{% endblock %}</title>
 	<meta charset="UTF-8">
-	<link href="{{ asset('css/style.css') }}" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	<link rel="preload" href="img/banner-min.png" as="image">
 	{% block stylesheets %}{% endblock %}
 </head>
 <body>
 	<div class="content">
-		<header>
-			<h2>Romain Cosson</h2>
-			<h1>Développeur Web - PHP / Javascript</h1>
-		</header>
-		<nav>
+		<img src="img/banner-min.jpg" style="display:none;" alt="" />
+		<nav class="top-nav">
 			<ul>
 				<li><a href="{{ path('homepage') }}">Accueil</a></li>
 				<li><a href="{{ path('about') }}">A propos</a></li>
 				<li><a href="{{ path('contact') }}">Contact</a></li>
 			</ul>
 		</nav>
-	</div>
-	{% block body %}{% endblock %}
-	<footer>
+		<header class="header">
+			<div class="header-text">	
+				<h2>Romain Cosson</h2>
+				<h1>Développeur Web - PHP / Javascript</h1>
+			</div>
+			<div class="header-popup">
+				<p>{{ name }}</p>
+			</div>
+		</header>
+		<div class="main">{% block body %}{% endblock %}</div>
+		<footer>
 
 	</footer>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     {% block javascripts %}{% endblock %}
 </body>
 </html>
